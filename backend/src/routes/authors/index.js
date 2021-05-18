@@ -9,19 +9,26 @@ const filePath = join(dirname(fileURLToPath(import.meta.url)),'authors.json')
 const fileContent = fs.readFileSync(filePath)
 
 ARouter.get('/', (req, res) => {
+  console.log("test")
   res.send(200,fileContent)
 })
 ARouter.get('/:id', (req, res) => {
   const id = req.params.id
-  res.send(200, JSON.parse(fs.readFileSync(filePath)).filter(a =>a._id === id))
+  res.status(200).send(JSON.parse(fs.readFileSync(filePath)).filter(a =>a._id === id))
 })
 ARouter.post('/', (req, res) => {
   const author = req.body
+  
   let authors = JSON.parse(fileContent)
-  author._id = nanoid()
-  authors.push(author)
-  fs.writeFileSync(filePath, JSON.stringify(authors))
-  res.send(201)
+  if(!authors.some(a =>a.email === author.email)){
+    author._id = nanoid()
+    authors.push(author)
+    fs.writeFileSync(filePath, JSON.stringify(authors))
+    res.send(201)
+  }else{
+    res.send(200, "Sorry, the email already exists!")
+  }
+  
 })
 ARouter.put('/:id', (req, res) => {
   const author = req.body

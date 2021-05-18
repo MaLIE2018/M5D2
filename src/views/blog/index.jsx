@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Image } from "react-bootstrap";
 import { withRouter } from "react-router";
-import BlogAuthor from "../../components/blog/blog-author";
+import BlogAuthor from "../../components/blog/blog-author/index.jsx";
 import posts from "../../data/posts.json";
 import "./styles.css";
 class Blog extends Component {
@@ -26,16 +26,16 @@ class Blog extends Component {
       return <div>loading</div>;
     } else {
       return (
-        <div className="blog-details-root">
+        <div className='blog-details-root'>
           <Container>
-            <Image className="blog-details-cover" src={blog.cover} fluid />
-            <h1 className="blog-details-title">{blog.title}</h1>
+            <Image className='blog-details-cover' src={blog.cover} fluid />
+            <h1 className='blog-details-title'>{blog.title}</h1>
 
-            <div className="blog-details-container">
-              <div className="blog-details-author">
+            <div className='blog-details-container'>
+              <div className='blog-details-author'>
                 <BlogAuthor {...blog.author} />
               </div>
-              <div className="blog-details-info">
+              <div className='blog-details-info'>
                 <div>{blog.createdAt}</div>
                 <div>{`${blog.readTime.value} ${blog.readTime.unit} read`}</div>
               </div>

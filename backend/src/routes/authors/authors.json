@@ -1,1 +1,26 @@
-[{"name":"John","surname":"Doe","_id":"sddf45","email":"email@email.de","dateOfBirth":"2020-01-05","avatar":"https://ui-avatars.com/api/?name=John+Doe"},{"name":"John","surname":"Doe","email":"email@email.de","dateOfBirth":"2020-01-05","avatar":"https://ui-avatars.com/api/?name=John+Doe","_id":"eYA_1JHWFowQB7s3rwaso"},{"name":"John","surname":"Doe","email":"email@email.de","dateOfBirth":"2020-01-05","avatar":"https://ui-avatars.com/api/?name=John+Doe","_id":"Tc33glTuzWlBbxDECRxKg"}]
+[
+  {
+    "name": "John",
+    "surname": "Doe",
+    "_id": "sddf45",
+    "email": "email@email.de",
+    "dateOfBirth": "2020-01-05",
+    "avatar": "https://ui-avatars.com/api/?name=John+Doe"
+  },
+  {
+    "name": "John",
+    "surname": "Doe",
+    "email": "email@email.de",
+    "dateOfBirth": "2020-01-05",
+    "avatar": "https://ui-avatars.com/api/?name=John+Doe",
+    "_id": "eYA_1JHWFowQB7s3rwaso"
+  },
+  {
+    "name": "John",
+    "surname": "Doe",
+    "email": "email@email.de",
+    "dateOfBirth": "2020-01-05",
+    "avatar": "https://ui-avatars.com/api/?name=John+Doe",
+    "_id": "Tc33glTuzWlBbxDECRxKg"
+  }
+]
