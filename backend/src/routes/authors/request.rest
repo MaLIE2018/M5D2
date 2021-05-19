@@ -1,0 +1,31 @@
+GET http://localhost:3001/authors
+
+################################
+
+POST http://localhost:3001/authors  
+Content-Type: application/json
+
+{
+  "name": "John",
+  "surname": "Doe",
+  "email": "email3@email.de",
+  "dateOfBirth": "2020-01-05",
+  "avatar": "https://ui-avatars.com/api/?name=John+Doe"
+}
+
+###
+
+DELETE http://localhost:3001/authors/
+
+
+###
+
+PUT http://localhost:3001/authors/
+Content-Type: application/json
+
+{
+  "name": "John",
+  "surname": "Doe",
+  "email": "email@email2.de",
+  "dateOfBirth": "2020-01-05"
+}

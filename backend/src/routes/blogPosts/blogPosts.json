@@ -1,0 +1,51 @@
+[
+  {
+    "_id": "SERVER GENERATED ID2",
+    "category": "ARTICLE CATEGORY",
+    "title": "ARTICLE TITLE",
+    "cover": "ARTICLE COVER (IMAGE LINK)",
+    "readTime": { "value": 2, "unit": "minute" },
+    "author": {
+      "name": "AUTHOR AVATAR NAME",
+      "avatar": "AUTHOR AVATAR LINK",
+      "_id": "2"
+    },
+    "content": "HTML",
+    "createdAt": "NEW DATE"
+  },
+  {
+    "category": "ARTICLE CATEGORY2",
+    "title": "another",
+    "cover": "ARTICLE COVER (IMAGE LINK)",
+    "readTime": { "value": 2, "unit": "minute" },
+    "author": {
+      "name": "AUTHOR AVATAR NAME",
+      "avatar": "AUTHOR AVATAR LINK",
+      "_id": "id"
+    },
+    "content": "HTML",
+    "_id": "ra2X3TQGg9POB_Roc13FH",
+    "createdAt": "2021-05-19T14:12:36.265Z"
+  },
+  {
+    "category": "ARTICLE CATEGORY2",
+    "title": "ARTICLE TITLE",
+    "cover": "ARTICLE COVER (IMAGE LINK)",
+    "readTime": { "value": 2, "unit": "minute" },
+    "author": {
+      "name": "AUTHOR AVATAR NAME",
+      "avatar": "AUTHOR AVATAR LINK",
+      "_id": "id"
+    },
+    "content": "HTML",
+    "_id": "18bYbsEyf_hSqf2PVBr0-",
+    "createdAt": "2021-05-19T14:17:21.537Z"
+  },
+  {
+    "title": "dddddd",
+    "content": "<p>dddsdsd</p>",
+    "category": "Category3",
+    "_id": "MkGimWTQh-8pnkCk-YGAd",
+    "createdAt": "2021-05-19T15:36:39.929Z"
+  }
+]
