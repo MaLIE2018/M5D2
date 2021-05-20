@@ -1,33 +1,32 @@
 import express from 'express';
-import {fileURLToPath} from "url"
-import {dirname, join} from "path"
 import { nanoid } from 'nanoid'
-import {getItems, writeItems} from '../../methods/fs/fileOperations.js'
-import {validationResult} from "express-validator"
+import {getItems, writeItems, getFilePath} from '../../methods/fs/fs-tools.js'
 const ARouter = express.Router();
-const filePath = join(dirname(fileURLToPath(import.meta.url)),'authors.json')
+const filePath = getFilePath('authors.json')
+
 
 // ********************Requests******************************
-ARouter.get('/', (req, res, next) => {
+ARouter.get('/', async (req, res, next) => {
   try {
-    res.status(200).send(getItems(filePath))
+    res.status(200).send(await getItems(filePath))
   } catch (error) {
     next(error)
   }
   
 })
-ARouter.get('/:id', (req, res) => {
+ARouter.get('/:id', async (req, res) => {
   try {
-    res.status(200).send(getItems(filePath).filter(a =>a._id === req.params.id))
+    const authors = await getItems(filePath)
+    res.status(200).send(authors.filter(a =>a._id === req.params.id))
   } catch (error) {
     
   }
 })
 
-ARouter.post('/', (req, res) => {
+ARouter.post('/', async (req, res) => {
   try {
     let author = req.body
-    let authors = getItems(filePath)
+    let authors = await getItems(filePath)
     if(!authors.some(a =>a.email === author.email)){
       author = {...author, _id:nanoid(), createdAt: new Date()}
       authors.push(author)
@@ -38,17 +37,15 @@ ARouter.post('/', (req, res) => {
     }
   } catch (error) {
     
-  }
-  
+  }  
   
 })
 // Validator as Middleware here
-ARouter.put('/:id', (req, res) => {
+ARouter.put('/:id', async (req, res) => {
   try {
-    // const error validationResult(req)
-    // if(!error.isEmpty())  next(createError(400, errorList:{errors}))
     const author = {...req.body, _id: id}
-    let authors = getItems(filePath).filter(a => a._id !== req.params.id)
+    let authors = await getItems(filePath)
+    authors.filter(a => a._id !== req.params.id)
     authors.push(author)
     writeItems(filePath, authors)
     res.status(201)
@@ -57,9 +54,10 @@ ARouter.put('/:id', (req, res) => {
   }
  
 })
-ARouter.delete('/:id', (req, res) => {
+ARouter.delete('/:id', async (req, res) => {
   try {
-    let authors = getItems(filePath).filter(a => a._id !== req.params.id)
+    let authors = await getItems(filePath)
+    authors.filter(a => a._id !== req.params.id)
     writeItems(filePath, authors)
     res.status(204).send()
   } catch (error) {

@@ -7,7 +7,15 @@ export default class NewBlogPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: { title: "", content: "", category: "" },
+      post: {
+        title: "",
+        content: "",
+        category: "",
+        author: { name: "", avatar: "" },
+        cover: "",
+      },
+      authorAvatar: undefined,
+      blogPostCover: undefined,
     };
   }
 
@@ -25,6 +33,26 @@ export default class NewBlogPost extends Component {
         };
       });
     }
+  };
+
+  handleChangeName = (e) => {
+    this.setState((state) => {
+      return {
+        post: {
+          ...this.state.post,
+          author: { ...this.state.post.author, [e.target.id]: e.target.value },
+        },
+      };
+    });
+  };
+
+  handleFileUpload = (e) => {
+    console.log(e.target.value);
+    const formData = new FormData();
+    formData.append(e.target.id, e.currentTarget.files[0]);
+    this.setState((state) => {
+      return { [e.target.id]: formData };
+    });
   };
 
   handleSubmit(e) {
@@ -65,6 +93,25 @@ export default class NewBlogPost extends Component {
               onChange={(e) => this.handleChange(e)}
             />
           </Form.Group>
+          <Form.Group controlId='name' className='mt-3'>
+            <Form.Label>Author's Name</Form.Label>
+            <Form.Control
+              size='lg'
+              required
+              placeholder='Name'
+              value={this.state.post.author.name}
+              onChange={(e) => this.handleChangeName(e)}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Avatar</Form.Label>
+            <Form.File
+              id='authorAvatar'
+              label='Upload an author avatar'
+              onChange={(e) => this.handleFileUpload(e)}
+              accept='image/*'
+            />
+          </Form.Group>
           <Form.Group controlId='category' className='mt-3'>
             <Form.Label>Category</Form.Label>
             <Form.Control
@@ -79,6 +126,15 @@ export default class NewBlogPost extends Component {
               <option>Category4</option>
               <option>Category5</option>
             </Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Cover</Form.Label>
+            <Form.File
+              id='blogPostCover'
+              label='Upload an Post cover'
+              accept='image/*'
+              onChange={(e) => this.handleFileUpload(e)}
+            />
           </Form.Group>
           <Form.Group className='mt-3'>
             <Form.Label>Blog Content</Form.Label>

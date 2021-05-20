@@ -1,23 +1,26 @@
 import express from 'express';
 import cors from "cors"
-
 import ARouter from "../routes/authors/authors.js"
 import bpRouter from '../routes/blogPosts/blogPosts.js';
+import fRouter from '../methods/fileUpload/fileHandler.js'
 import { notFoundHandler,badRequestHandler,catchAllHandler, forbiddenHandler } from './../methods/err/errorHandlers.js';
+import {publicFolderPath}  from "../methods/fs/fs-tools.js"
 import  createError from 'http-errors';
-
 const app = express();
 const port = 3001;
 
 
 /*Global Middleware */
-
-app.use(cors())
+app.use(express.static(publicFolderPath))
 app.use(express.json())
-
+app.use(cors({
+  "origin": "http://localhost:3000",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false
+}))
 /*Routes */
-app.use("/authors",ARouter)
-app.use("/blogPosts", bpRouter)
+app.use("/authors",ARouter, fRouter)
+app.use("/blogPosts", bpRouter, fRouter)
 
 /* Error Middleware */
 app.use(notFoundHandler)
@@ -29,6 +32,7 @@ app.use((req,res,next)=>{
     res.send(createError(404,{message:"The route is not implemented"}))
   }
 })
+
 app.listen(port, () => {
   console.log("Server is running")
 })

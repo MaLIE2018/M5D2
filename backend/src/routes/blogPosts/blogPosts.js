@@ -1,20 +1,20 @@
 import express from 'express';
-import {fileURLToPath} from "url";
-import {dirname, join} from "path"
 import {nanoid} from "nanoid"
-import { getItems, writeItems} from '../../methods/fs/fileOperations.js';
+import { getItems, writeItems,getFilePath} from '../../methods/fs/fs-tools.js';
 import createError from 'http-errors'
-const bpRouter = express.Router();
-const filePath = join(dirname(fileURLToPath(import.meta.url)), "blogPosts.json")
-import { checkBlogPostSchema, checkValidationResult } from './../../methods/validation/validations.js';
+import { checkBlogPostSchema, checkValidationResult } from '../../methods/validation/validations.js';
 
+const bpRouter = express.Router();
+
+const filePath = getFilePath("blogPosts.json")
 
 bpRouter.get("/", async (req, res, next) =>{  
-  try {
+      try { 
       let BlogPosts = await getItems(filePath)
       if(req.query.title){
         const filteredPosts = BlogPosts.filter(post => 
-          post.hasOwnProperty("title") && post.title.toLowerCase().includes(req.query.title.toLowerCase()))
+          post.hasOwnProperty("title") && post.title.toLowerCase()
+          .includes(req.query.title.toLowerCase()))
         res.status(200).send(filteredPosts)
       }
       res.status(200).send(BlogPosts)
