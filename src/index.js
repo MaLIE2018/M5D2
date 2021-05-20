@@ -4,11 +4,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
+import { QueryParamProvider } from 'use-query-params';
+
+
+const Router =
+  process.env.NODE_ENV === "production" ? HashRouter : BrowserRouter;
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router basename="/">
+    <QueryParamProvider ReactRouterRoute={Route}>
+      <App />
+    </QueryParamProvider>
+  </Router>,
   document.getElementById("root")
 );
 

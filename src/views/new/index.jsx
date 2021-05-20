@@ -44,6 +44,7 @@ export default class NewBlogPost extends Component {
       });
       if (res.ok) {
         console.log("BlogPost created");
+        this.props.history.push("/");
       }
     } catch (error) {
       console.log(error);

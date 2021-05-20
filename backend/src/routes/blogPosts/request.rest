@@ -1,5 +1,4 @@
 GET http://localhost:3001/blogPosts
-
 ################################
 
 GET http://localhost:3001/blogPosts/SERVER GENERATED ID1

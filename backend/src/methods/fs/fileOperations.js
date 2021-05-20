@@ -1,7 +1,4 @@
-import fs from "fs";
+import fs from "fs-extra"
 
-export const getItems = filePath => JSON.parse(fs.readFileSync(filePath))
-
-
-export const writeItems = (filePath,data) => 
-fs.writeFileSync(filePath, JSON.stringify(data))
+export const getItems = async filePath => await fs.readJson(filePath)
+export const writeItems = async (filePath,data) => await fs.writeJson(filePath,data)

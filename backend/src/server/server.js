@@ -4,7 +4,7 @@ import cors from "cors"
 import ARouter from "../routes/authors/authors.js"
 import bpRouter from '../routes/blogPosts/blogPosts.js';
 import { notFoundHandler,badRequestHandler,catchAllHandler, forbiddenHandler } from './../methods/err/errorHandlers.js';
-import { createError } from 'http-errors';
+import  createError from 'http-errors';
 
 const app = express();
 const port = 3001;
@@ -26,7 +26,7 @@ app.use(catchAllHandler)
 app.use(forbiddenHandler)
 app.use((req,res,next)=>{
   if(!req.route && !req.headersSent){
-    next(createError(404,{message:"The route is not implemented"}))
+    res.send(createError(404,{message:"The route is not implemented"}))
   }
 })
 app.listen(port, () => {
