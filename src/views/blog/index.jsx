@@ -9,15 +9,30 @@ class Blog extends Component {
     blog: {},
     loading: true,
   };
+
+  getPost = async (id) => {
+    try {
+      const res = await fetch(`http://localhost:3001/blogPosts/${id}`);
+      if (!res.ok) throw "something went wrong";
+      const data = await res.json();
+      this.setState((state) => {
+        return {
+          blog: data[0],
+        };
+      });
+    } catch (error) {
+      console.log("getData failed");
+    }
+  };
+
   componentDidMount() {
     const { id } = this.props.match.params;
-    console.log(posts);
-    const blog = posts.find((post) => post._id.toString() === id);
-    if (blog) {
-      this.setState({ blog, loading: false });
-    } else {
-      this.props.history.push("/404");
-    }
+    this.getPost(id);
+    // if (this.state.blog) {
+    //   this.setState({ blog, loading: false });
+    // } else {
+    //   this.props.history.push("/404");
+    // }
   }
 
   render() {

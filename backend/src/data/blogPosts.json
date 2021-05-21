@@ -1,9 +1,9 @@
 [
   {
-    "_id": "SERVER GENERATED ID2",
+    "_id": "SERVERGENERATEDID2",
     "category": "ARTICLE CATEGORY",
     "title": "ARTICLE TITLE",
-    "cover": "ARTICLE COVER (IMAGE LINK)",
+    "cover": "https://striveschool.ghost.io/content/images/2020/11/Ervins.png",
     "readTime": { "value": 2, "unit": "minute" },
     "author": {
       "name": "Tobia De Angelis",
@@ -15,7 +15,7 @@
   {
     "category": "ARTICLE CATEGORY2",
     "title": "another",
-    "cover": "ARTICLE COVER (IMAGE LINK)",
+    "cover": "https://striveschool.ghost.io/content/images/2020/11/Ervins.png",
     "readTime": { "value": 2, "unit": "minute" },
     "author": {
       "name": "Tobia De Angelis",
@@ -28,7 +28,7 @@
   {
     "category": "ARTICLE CATEGORY2",
     "title": "ARTICLE TITLE",
-    "cover": "ARTICLE COVER (IMAGE LINK)",
+    "cover": "https://striveschool.ghost.io/content/images/2020/11/Ervins.png",
     "readTime": { "value": 2, "unit": "minute" },
     "author": {
       "name": "AUTHOR AVATAR NAME",
@@ -42,6 +42,7 @@
   {
     "title": "dddddd",
     "content": "<p>dddsdsd</p>",
+    "cover": "https://striveschool.ghost.io/content/images/2020/12/M1M06-3.png",
     "author": {
       "name": "Tobia De Angelis",
       "avatar": "https://striveschool.ghost.io/content/images/2020/12/tobia_mymoji.jpg"
@@ -106,12 +107,14 @@
   {
     "title": "Another BlogPost",
     "content": "<p>Super geiler BlogPost</p>",
+    "cover": "https://striveschool.ghost.io/content/images/2020/12/M1M06-3.png",
     "category": "Category4",
     "_id": "IbD8j3Dh9ZgKI7mXlqOoI",
     "createdAt": "2021-05-19T18:57:26.606Z"
   },
   {
     "title": "Was soll ich noch tun?",
+    "cover": "https://striveschool.ghost.io/content/images/2020/12/M1M06-3.png",
     "content": "<p>ddsdsdsssds</p>",
     "category": "Category4",
     "_id": "THiv5ejDj-Te_p83L90BR",
