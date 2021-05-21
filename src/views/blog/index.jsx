@@ -18,6 +18,7 @@ class Blog extends Component {
       this.setState((state) => {
         return {
           blog: data[0],
+          loading: false,
         };
       });
     } catch (error) {
@@ -28,11 +29,6 @@ class Blog extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     this.getPost(id);
-    // if (this.state.blog) {
-    //   this.setState({ blog, loading: false });
-    // } else {
-    //   this.props.history.push("/404");
-    // }
   }
 
   render() {

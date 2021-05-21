@@ -53,7 +53,7 @@
     "createdAt": "2021-05-19T15:36:39.929Z"
   },
   {
-    "_id": 1,
+    "_id": "1",
     "category": "Getting Started",
     "title": "From 'Hello World' to Getting Hired as Software Engineer: Strive School meets Mimo",
     "cover": "https://striveschool.ghost.io/content/images/2020/12/M1M06-3.png",
@@ -66,7 +66,7 @@
     "createdAt": "04 Dec 2020"
   },
   {
-    "_id": 2,
+    "_id": "2",
     "category": "The W Pledge",
     "title": "Announcing The W Pledge",
     "cover": "https://striveschool.ghost.io/content/images/2021/03/W-fund-1.png",
@@ -79,7 +79,7 @@
     "createdAt": "08 Mar 2021"
   },
   {
-    "_id": 3,
+    "_id": "3",
     "category": "Learnings and Tips",
     "title": "So you want to learn coding and become a software engineer? Here are some tips from those who've done it",
     "cover": "https://striveschool.ghost.io/content/images/2020/11/tips02.png",
@@ -92,7 +92,7 @@
     "createdAt": "25 Nov 2020"
   },
   {
-    "_id": 4,
+    "_id": "4",
     "category": "Student Stories",
     "title": "I was a salesman 6 months ago, and now I am a professional web developer",
     "cover": "https://striveschool.ghost.io/content/images/2020/11/Ervins.png",
