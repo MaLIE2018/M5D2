@@ -23,10 +23,40 @@ export const generatePDFStream = async data => {
 
   const docDefinition = {
     content: [
-      blog.title,
-      blog.author.name,
-      plainText
+      {
+        text: blog.title,
+        style: 'header'
+      },
+      {
+        text: blog.author.name,
+        style: 'subheader'
+      },
+      {
+        text: plainText,
+        style: 'normal'
+      },
+      
     ],
+    styles: {
+      header: {
+        fontSize: 18,
+        bold: true
+      },
+      subheader: {
+        fontSize: 15,
+        bold: false
+      },
+      normal: {
+        fontSize: 12,
+        bold: false
+      },
+      quote: {
+        italics: true
+      },
+      small: {
+        fontSize: 8
+      }
+    }
   }
 
   const options = {
