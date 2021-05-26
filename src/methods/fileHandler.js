@@ -21,13 +21,14 @@ params: {
 fRouter.post("/:id/uploadAvatar",multer ({storage: cloudinaryStorage }).single("authorAvatar"), 
 async (req, res, next) => {
   try {
+   
     let blogPosts = await getItemsExceptOneWithIdFromFile(filePath, req.params.id)
     let blogPost = await getItemsFromFile(filePath, req.params.id)
     let newFileName = `${req.params.id}${extname(req.file.originalname)}`
-    blogPost[0].author.avatar = process.env.BACKEND_DEV_URL + `/img/authors/${newFileName}`
+    blogPost[0].author.avatar = req.file.path
     blogPosts.push(blogPost[0])
     await writeItems(filePath, blogPosts)
-    await writeImage(`authors/${newFileName}`, req.file.buffer)
+    // await writeImage(`authors/${newFileName}`, req.file.buffer)
     res.status(200).send({"upload":"ok"})
   } catch (error) {
     console.log(error)
@@ -40,13 +41,14 @@ async (req, res, next) => {
 fRouter.post("/:id/uploadCover",multer ({storage: cloudinaryStorage }).single("blogPostCover"),
 async (req, res, next) => {
   try {
+ 
     let blogPosts = await getItemsExceptOneWithIdFromFile(filePath, req.params.id)
     let blogPost = await getItemsFromFile(filePath, req.params.id)
     let newFileName = `${req.params.id}${extname(req.file.originalname)}`
-    blogPost[0].cover = process.env.BACKEND_DEV_URL + `/img/blogPosts/${newFileName}`
+    blogPost[0].cover = req.file.path
     blogPosts.push(blogPost[0])
     await writeItems(filePath, blogPosts)
-    await writeImage(`blogPosts/${req.params.id}${extname(req.file.originalname)}`, req.file.buffer)
+    //await writeImage(`blogPosts/${req.params.id}${extname(req.file.originalname)}`, req.file.buffer)
     res.status(200).send({"upload":"ok"})
     
   } catch (error) {
