@@ -1,11 +1,11 @@
 import express  from 'express';
-import { getFilePath, getItemsExceptOneWithIdFromFile, getItemsFromFile, writeImage, writeItems } from './fs-tools.js';
+import { getFilePath, getItems, getItemsExceptOneWithIdFromFile, getItemsFromFile, writeImage, writeItems } from './fs-tools.js';
 import multer from "multer"
 import {extname} from "path"
 import {v2 as cloudinary} from "cloudinary"
 import {CloudinaryStorage} from "multer-storage-cloudinary"
 import pipeline from "stream"
-import { generatePDFStream } from './pdf.js';
+import { generatePDFStream,generatePDFStream2 } from './pdf.js';
 const fRouter = express.Router()
 
 const filePath = getFilePath("blogPosts.json")
@@ -59,14 +59,26 @@ async (req, res, next) => {
 
 })
 
-fRouter.get("/:id/PDFDownload", (req, res, next) => {
+fRouter.get("/:id/PDFDownload", async (req, res, next) => {
   try {
-    // console.log(req.body)
-    res.setHeader("Content-Disposition", "attachment; filename=blog.pdf")
-    const stream = generatePDFStream()
-
+    res.setHeader("Content-Type", "application/json")
+    let blogPosts = await getItems(filePath)
+    let reqPost = blogPosts.filter(a => a._id === req.params.id)
+    const stream = await generatePDFStream(reqPost)
     stream.pipe(res)
     stream.end()
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+fRouter.get("/:id/PDFDownload2", async(req, res, next) => {
+  try {
+    // console.log(req.body)
+    res.setHeader("Content-Type", "application/json")
+    const buffer = await generatePDFStream2()
+
+    res.download(buffer)
   } catch (error) {
     console.log(error)
   }
