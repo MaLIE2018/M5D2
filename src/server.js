@@ -27,9 +27,9 @@ const corsOptions = {
 /*Global Middleware */
 app.use(express.static(publicFolderPath2))
 app.use(express.json())
-app.use(cors(corsOptions))
+///app.use(cors(corsOptions))
 /*Routes */
-app.use("/authors",ARouter, fRouter)
+app.use("/authors",cors(corsOptions),ARouter, fRouter)
 app.use("/blogPosts", bpRouter, fRouter, rc)
 
 /* Error Middleware */

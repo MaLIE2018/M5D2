@@ -59,11 +59,14 @@ async (req, res, next) => {
 
 })
 
-fRouter.post("/:id/PDFDownload", (req, res, next) => {
+fRouter.get("/:id/PDFDownload", (req, res, next) => {
   try {
     // console.log(req.body)
-    res.setHeader("Content-Disposition", "attachment; filename='blog.pdf'")
-    pipeline(generatePDFStream(), res, err => next(err))
+    res.setHeader("Content-Disposition", "attachment; filename=blog.pdf")
+    const stream = generatePDFStream()
+
+    stream.pipe(res)
+    stream.end()
   } catch (error) {
     console.log(error)
   }

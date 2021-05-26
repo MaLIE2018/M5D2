@@ -4,12 +4,13 @@ import PdfPrinter from "pdfmake"
 export const generatePDFStream = data => {
   const fonts = {
     Roboto: {
-      normal: "fonts/Roboto-Black.ttf",
-      bold: "fonts/Roboto-Bold.ttf",
-      italics: "fonts/Roboto-Italic.ttf",
-      bolditalics: "fonts/Roboto-BoldItalic.ttf",
+      normal: "Helvetica",
+      bold: "Helvetica-Bold",
+      italics: "Helvetica-Oblique",
+      bolditalics: "Helvetica-BoldOblique",
     },
-  }
+  };
+  
 
   const printer = new PdfPrinter(fonts)
 
@@ -22,7 +23,6 @@ export const generatePDFStream = data => {
   }
 
   const pdfReadableStream = printer.createPdfKitDocument(docDefinition, options)
-  pdfReadableStream.end()
 
   return pdfReadableStream
 }
