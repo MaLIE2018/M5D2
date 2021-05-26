@@ -40,15 +40,18 @@ export const generatePDFStream = async data => {
     styles: {
       header: {
         fontSize: 18,
-        bold: true
+        bold: true,
+        margin: [10, 30, 40, 30]
       },
       subheader: {
         fontSize: 15,
-        bold: false
+        bold: false,
+        margin: [10, 0, 0, 0]
       },
       normal: {
         fontSize: 12,
-        bold: false
+        bold: false,
+        margin: [10, 20, 40, 0]
       },
       quote: {
         italics: true
