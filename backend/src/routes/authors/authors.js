@@ -1,6 +1,6 @@
 import express from 'express';
 import { nanoid } from 'nanoid'
-import {getItems, writeItems, getFilePath} from '../../methods/fs/fs-tools.js'
+import {getItems, writeItems, getFilePath} from '../../methods/fs-tools.js'
 const ARouter = express.Router();
 const filePath = getFilePath('authors.json')
 

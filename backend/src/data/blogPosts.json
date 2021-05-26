@@ -1,40 +1,10 @@
 [
   {
-    "_id": "SERVERGENERATEDID2",
-    "category": "ARTICLE CATEGORY",
-    "title": "ARTICLE TITLE",
-    "cover": "https://striveschool.ghost.io/content/images/2020/11/Ervins.png",
-    "readTime": { "value": 2, "unit": "minute" },
-    "author": {
-      "name": "Tobia De Angelis",
-      "avatar": "https://striveschool.ghost.io/content/images/2020/12/tobia_mymoji.jpg"
-    },
-    "content": "HTML",
-    "createdAt": "NEW DATE"
-  },
-  {
-    "category": "ARTICLE CATEGORY2",
-    "title": "another",
-    "cover": "https://striveschool.ghost.io/content/images/2020/11/Ervins.png",
-    "readTime": { "value": 2, "unit": "minute" },
-    "author": {
-      "name": "Tobia De Angelis",
-      "avatar": "https://striveschool.ghost.io/content/images/2020/12/tobia_mymoji.jpg"
-    },
-    "content": "<p>dddsdsd</p>",
-    "_id": "ra2X3TQGg9POB_Roc13FH",
-    "createdAt": "2021-05-19T14:12:36.265Z"
-  },
-  {
     "category": "ARTICLE CATEGORY2",
     "title": "ARTICLE TITLE",
     "cover": "https://striveschool.ghost.io/content/images/2020/11/Ervins.png",
     "readTime": { "value": 2, "unit": "minute" },
-    "author": {
-      "name": "AUTHOR AVATAR NAME",
-      "avatar": "AUTHOR AVATAR LINK",
-      "_id": "id"
-    },
+    "author": { "name": "AUTHOR AVATAR NAME", "avatar": "AUTHOR AVATAR LINK" },
     "content": "<p>dddsdsd</p>",
     "_id": "18bYbsEyf_hSqf2PVBr0-",
     "createdAt": "2021-05-19T14:17:21.537Z"
@@ -105,19 +75,84 @@
     "createdAt": "25 Nov 2020"
   },
   {
+    "title": "Was soll ich noch tun?",
+    "readTime": { "value": 2, "unit": "minute" },
+    "cover": "https://striveschool.ghost.io/content/images/2020/12/M1M06-3.png",
+    "content": "<p>ddsdsdsssds</p>",
+    "author": {
+      "name": "Bri Cho",
+      "avatar": "https://striveschool.ghost.io/content/images/2020/11/FBBRRZy5_400x400.jpg"
+    },
+    "category": "Category4",
+    "_id": "THiv5ejDj-Te_p83L90BR",
+    "createdAt": "2021-05-19T18:57:54.755Z"
+  },
+  {
+    "category": "ARTICLE CATEGORY2",
+    "title": "another",
+    "cover": "https://striveschool.ghost.io/content/images/2020/11/Ervins.png",
+    "readTime": { "value": 2, "unit": "minute" },
+    "author": {
+      "name": "Tobia De Angelis",
+      "avatar": "https://striveschool.ghost.io/content/images/2020/12/tobia_mymoji.jpg"
+    },
+    "content": "<p>dddsdsd</p>",
+    "_id": "ra2X3TQGg9POB_Roc13FH",
+    "createdAt": "2021-05-19T14:12:36.265Z"
+  },
+  {
     "title": "Another BlogPost",
     "content": "<p>Super geiler BlogPost</p>",
-    "cover": "https://striveschool.ghost.io/content/images/2020/12/M1M06-3.png",
+    "readTime": { "value": 2, "unit": "minute" },
+    "cover": "http://localhost:3001/img/blogPosts/IbD8j3Dh9ZgKI7mXlqOoI.jpg",
+    "author": {
+      "name": "Bri Cho",
+      "avatar": "http://localhost:3001/img/blogPosts/IbD8j3Dh9ZgKI7mXlqOoI.jpg"
+    },
     "category": "Category4",
     "_id": "IbD8j3Dh9ZgKI7mXlqOoI",
     "createdAt": "2021-05-19T18:57:26.606Z"
   },
   {
-    "title": "Was soll ich noch tun?",
-    "cover": "https://striveschool.ghost.io/content/images/2020/12/M1M06-3.png",
-    "content": "<p>ddsdsdsssds</p>",
+    "title": "Neuer BlogPost",
+    "content": "<p>Neuer BlogPosts</p>",
+    "category": "Category3",
+    "author": {
+      "name": "Max",
+      "avatar": "http://localhost:3001/img/authors/KK3M5ng8PiRO437lsmwQK.jpg"
+    },
+    "cover": "http://localhost:3001/img/blogPosts/KK3M5ng8PiRO437lsmwQK.jpg",
+    "readTime": { "value": 2, "unit": "minute" },
+    "_id": "KK3M5ng8PiRO437lsmwQK",
+    "createdAt": "2021-05-26T08:41:13.032Z",
+    "updatedAt": "2021-05-26T08:41:13.032Z"
+  },
+  {
+    "title": "Neuer BlogPost",
+    "content": "<p>Finally</p>",
+    "category": "Category3",
+    "author": {
+      "name": "Max",
+      "avatar": "http://localhost:3001/img/authors/p-vRxfElfZLLRFo_z2NYo.jpg"
+    },
+    "cover": "http://localhost:3001/img/blogPosts/p-vRxfElfZLLRFo_z2NYo.jpg",
+    "readTime": { "value": 2, "unit": "minute" },
+    "_id": "p-vRxfElfZLLRFo_z2NYo",
+    "createdAt": "2021-05-26T08:48:28.773Z",
+    "updatedAt": "2021-05-26T08:48:28.773Z"
+  },
+  {
+    "title": "Neuer BlogPost",
+    "content": "<p>Finally!2</p>",
     "category": "Category4",
-    "_id": "THiv5ejDj-Te_p83L90BR",
-    "createdAt": "2021-05-19T18:57:54.755Z"
+    "author": {
+      "name": "Max",
+      "avatar": "http://localhost:3001/img/authors/_6mA_t2OCsgcSj9ZQ23uj.jpg"
+    },
+    "cover": "http://localhost:3001/img/blogPosts/_6mA_t2OCsgcSj9ZQ23uj.jpg",
+    "readTime": { "value": 2, "unit": "minute" },
+    "_id": "_6mA_t2OCsgcSj9ZQ23uj",
+    "createdAt": "2021-05-26T08:50:02.597Z",
+    "updatedAt": "2021-05-26T08:50:02.597Z"
   }
 ]

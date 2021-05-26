@@ -1,8 +1,8 @@
 import express from 'express';
 import {nanoid} from "nanoid"
-import { getItems, writeItems,getFilePath} from '../../methods/fs/fs-tools.js';
+import { getItems, writeItems,getFilePath} from '../../methods/fs-tools.js';
 import createError from 'http-errors'
-import { checkBlogPostSchema, checkValidationResult } from '../../methods/validation/validations.js';
+import { checkBlogPostSchema, checkValidationResult } from '../../methods/validations.js';
 
 const bpRouter = express.Router();
 
@@ -39,11 +39,11 @@ bpRouter.get("/:id", async ( req, res, next) =>{
 })
 bpRouter.post("/",checkBlogPostSchema,checkValidationResult, async ( req, res, next) =>{
   try {
-      let blogPosts = await getItems(filePath)
-      let blogPost = {...req.body, _id: nanoid(), createdAt: new Date()}
-      blogPosts.push(blogPost)
-      writeItems(filePath, blogPosts)
-      res.status(201).send(blogPost._id)
+    let blogPosts = await getItems(filePath)
+    let blogPost = {...req.body, _id: nanoid(), createdAt: new Date(),updatedAt: new Date()}
+    blogPosts.push(blogPost)
+    writeItems(filePath, blogPosts)
+    res.status(201).send({_id: blogPost._id})
   } catch (err) {
     console.log(err)
     next(err)
@@ -57,7 +57,7 @@ bpRouter.put("/:id",checkBlogPostSchema,checkValidationResult, async (req, res, 
         let blogPost = {...req.body, _id: req.params.id, updatedAt: new Date()}
         blogPosts.push(blogPost)
         writeItems(filePath, blogPosts)
-        res.status(200).send(blogPost)
+        res.status(200).send({_id: blogPost._id})
     } else{
       next(createError(404, {message:`The blogPost with ${req.params.id} is not found`}))
     }
