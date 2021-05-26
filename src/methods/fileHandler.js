@@ -3,14 +3,22 @@ import { getFilePath, getItemsExceptOneWithIdFromFile, getItemsFromFile, writeIm
 import multer from "multer"
 import {extname} from "path"
 import {v2 as cloudinary} from "cloudinary"
-import {cloundinaryStorage} from "multer-storage-cloudinary"
+import {CloudinaryStorage} from "multer-storage-cloudinary"
 
 const fRouter = express.Router()
 
 const filePath = getFilePath("blogPosts.json")
 
-fRouter.post("/:id/uploadAvatar",multer().single("authorAvatar"), 
 
+const cloudinaryStorage = new CloudinaryStorage({
+	cloudinary,
+params: {
+	folder: "BlogPosts",
+}
+})
+
+
+fRouter.post("/:id/uploadAvatar",multer ({storage: cloudinaryStorage }).single("authorAvatar"), 
 async (req, res, next) => {
   try {
     let blogPosts = await getItemsExceptOneWithIdFromFile(filePath, req.params.id)
@@ -29,7 +37,7 @@ async (req, res, next) => {
 
 })
 
-fRouter.post("/:id/uploadCover",multer().single("blogPostCover"),
+fRouter.post("/:id/uploadCover",multer ({storage: cloudinaryStorage }).single("blogPostCover"),
 async (req, res, next) => {
   try {
     let blogPosts = await getItemsExceptOneWithIdFromFile(filePath, req.params.id)
