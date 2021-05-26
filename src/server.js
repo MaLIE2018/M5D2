@@ -27,10 +27,7 @@ const corsOptions = {
 /*Global Middleware */
 app.use(express.static(publicFolderPath2))
 app.use(express.json())
-app.use(cors({
-  corsOptions,
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
-}))
+app.use(cors(corsOptions))
 /*Routes */
 app.use("/authors",ARouter, fRouter)
 app.use("/blogPosts", bpRouter, fRouter, rc)
