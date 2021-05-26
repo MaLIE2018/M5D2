@@ -16,11 +16,16 @@ export const generatePDFStream = async data => {
   
 
   const printer = new PdfPrinter(fonts)
+  
+  
+  let plainText = blog.content.replace(/<[^>]+>/g, '');
+
 
   const docDefinition = {
     content: [
       blog.title,
-      blog.author.name
+      blog.author.name,
+      plainText
     ],
   }
 
