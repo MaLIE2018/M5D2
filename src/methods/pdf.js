@@ -4,10 +4,10 @@ import PdfPrinter from "pdfmake"
 export const generatePDFStream = data => {
   const fonts = {
     Roboto: {
-      normal: "../fonts/Roboto-Black.ttf",
-      bold: "../fonts/Roboto-Bold.ttf",
-      italics: "../fonts/Roboto-Italic.ttf",
-      bolditalics: "../fonts/Roboto-BoldItalic.ttf",
+      normal: "fonts/Roboto-Black.ttf",
+      bold: "fonts/Roboto-Bold.ttf",
+      italics: "fonts/Roboto-Italic.ttf",
+      bolditalics: "fonts/Roboto-BoldItalic.ttf",
     },
   }
 
