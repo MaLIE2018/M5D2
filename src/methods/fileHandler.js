@@ -58,6 +58,18 @@ async (req, res, next) => {
 
 })
 
+fRouter.post("/:id/PDFDownload", (req, res, next) => {
+  try {
+    console.log(req.body)
+    
+    res.setHeader("Content-Disposition: attachment; filename='blog.pdf'")
+  } catch (error) {
+    
+  }
+})
+
+
+
 
 
 

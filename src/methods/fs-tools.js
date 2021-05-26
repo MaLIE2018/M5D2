@@ -24,3 +24,5 @@ export const getItemsExceptOneWithIdFromFile = async (filePath, id) => {
   const items = await getItems(filePath)
   return items.filter(item => item._id !== id)
 }
+
+
