@@ -2,6 +2,8 @@ import express  from 'express';
 import { getFilePath, getItemsExceptOneWithIdFromFile, getItemsFromFile, writeImage, writeItems } from './fs-tools.js';
 import multer from "multer"
 import {extname} from "path"
+import {v2 as cloudinary} from "cloudinary"
+import {cloundinaryStorage} from "multer-storage-cloudinary"
 
 const fRouter = express.Router()
 
