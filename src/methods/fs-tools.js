@@ -8,6 +8,7 @@ const dataFilesPath = join(dirname(fileURLToPath(import.meta.url)), "../data")
 
 export const publicFolderPath = join(dirname(fileURLToPath(import.meta.url)), "../../public/img")
 export const publicFolderPath2 = join(dirname(fileURLToPath(import.meta.url)), "../../public")
+export const tempPDFPath = join(dirname(fileURLToPath(import.meta.url)), "../data/tempPDF/send.pdf")
 export const getFilePath = (fileName) => join(dataFilesPath, fileName)
 export const getItems = async filePath => await fs.readJson(filePath)
 export const writeItems = async (filePath,data) => 

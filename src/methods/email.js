@@ -2,12 +2,12 @@ import sgMail from '@sendgrid/mail'
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-
+console.log(sgMail)
 
 const createEmailWithAttachments = (title, toEmail, html, attachment) => {
   return {
     to: toEmail,
-    from: 'liebsch@pm.me',
+    from: 'liebsch@dipmaxexport.com',
     subject: `New Blog Post ${title}`,
     text: html.replace(/<[^>]+>/g, ''),
     html: html,
@@ -25,7 +25,7 @@ const createEmailWithAttachments = (title, toEmail, html, attachment) => {
 const createEmailWithoutAttachments = (title, toEmail, html) => {
   return {
     to: toEmail,
-    from: 'liebsch@pm.me',
+    from: 'liebsch@dipmaxexport.com',
     subject: `New Blog Post ${title}`,
     text: html.replace(/<[^>]+>/g, ''),
     html: html
@@ -36,7 +36,9 @@ const createEmailWithoutAttachments = (title, toEmail, html) => {
 
 export const sendEmailWAtt = async (title,toEmail, html, attachment) => {
   try {
-    await sgMail.send(createEmailWithAttachments(title,toEmail, html, attachment));
+    await sgMail.send(createEmailWithAttachments(title,toEmail, html, attachment)).then(() => {
+      console.log('Email sent')
+    })
   } catch (error) {
     console.error(error);
     if (error.response) {
@@ -46,13 +48,15 @@ export const sendEmailWAtt = async (title,toEmail, html, attachment) => {
 }
 
 export const sendEmail = async (title,toEmail, html) => {
-  console.log("test")
+ 
   try {
-    await sgMail.send(createEmailWithoutAttachments(title,toEmail, html));
+    await sgMail.send(createEmailWithoutAttachments(title,toEmail, html)).then(() => {
+      console.log('Email sent')
+    })
   } catch (error) {
     console.error("error", error);
     if (error.response) {
-      console.error(error)
+      console.error(error.response.body)
     }
   }
 }

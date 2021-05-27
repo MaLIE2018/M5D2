@@ -1,10 +1,11 @@
 import express from 'express';
 import {nanoid} from "nanoid"
-import { getItems, writeItems,getFilePath} from '../../methods/fs-tools.js';
+import { getItems, writeItems,getFilePath, tempPDFPath} from '../../methods/fs-tools.js';
 import createError from 'http-errors'
 import { checkBlogPostSchema, checkValidationResult } from '../../methods/validations.js';
 import { sendEmail,sendEmailWAtt } from '../../methods/email.js';
 import { getPDF } from '../../methods/pdf.js';
+import fs from "fs-extra"
 
 const bpRouter = express.Router();
 
@@ -58,10 +59,11 @@ bpRouter.get('/:id/email', async (req, res, next) =>{
     let blogPosts = await getItems(filePath)
     let reqPost = blogPosts.filter(a => a._id === req.params.id)
     await getPDF(reqPost)
-    pdf = fs.readFIleSync("../data/send.pdf").toString("base64")
-    await sendEmailWAtt(blogPost.title, blogPost.author.email, blogPost.content,pdf)
+    let pdf = await fs.readFile(tempPDFPath)
+    let content = pdf.toString("base64")
+    await sendEmailWAtt(reqPost[0].title, reqPost[0].author.email, reqPost[0].content, content)
     // await sendEmail(reqPost[0].title, reqPost[0].author.email, reqPost[0].content)
-  res.status(201).send({_id: reqPost._id})
+    res.status(201).send({_id: reqPost[0]._id})
   } catch (error) {
     console.log(error)
     next(error)
