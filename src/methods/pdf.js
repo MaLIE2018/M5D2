@@ -1,7 +1,6 @@
 import PdfPrinter from "pdfmake"
 import fetch from "node-fetch"
 import DataURIParser from 'datauri/parser.js';
-import {promisify} from "util"
 import {extname} from "path"
 
 const parser = new DataURIParser()
