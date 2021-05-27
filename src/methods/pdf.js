@@ -40,7 +40,7 @@ export const generatePDFStream = async data => {
 
   const printer = new PdfPrinter(fonts)
   let url = ""
-  if(!isURL(blog.cover)){
+  if(isURL(blog.cover)){
     url = blog.cover
   }else{
     url = "https://designshack.net/wp-content/uploads/placehold.jpg"
@@ -115,7 +115,7 @@ export const getPDF = async data => {
   const blog = data[0]
   const printer = new PdfPrinter(fonts)
   let url = ""
-  if(!isURL(blog.cover)){
+  if(isURL(blog.cover)){
     url = blog.cover
   }else{
     url = "https://designshack.net/wp-content/uploads/placehold.jpg"
@@ -172,11 +172,8 @@ export const getPDF = async data => {
 
   const pdfReadableStream = printer.createPdfKitDocument(docDefinition)
   let destination = createWriteStream("../data/tempPDF/send.pdf")
-  console.log('destination:', destination)
-  await asyncPipeline(pdfReadableStream, destination, err => {console.log(err)})
-  .then((data) => {console.log(data)})
-  .catch((err) => {console.log("Errorssdsds",err)})
-
-  return 
+  // return await asyncPipeline(pdfReadableStream, destination, err => {console.log(err)})
+  
+ 
 }
 

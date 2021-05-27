@@ -58,8 +58,8 @@ bpRouter.get('/:id/email', async (req, res, next) =>{
     let blogPosts = await getItems(filePath)
     let reqPost = blogPosts.filter(a => a._id === req.params.id)
     await getPDF(reqPost)
-    pdf = fs.readFIleSync("../data/send.pdf").toString("base64")
-    sendEmail(blogPost.title, blogPost.author.email, blogPost.content,pdf)
+    // pdf = fs.readFIleSync("../data/send.pdf").toString("base64")
+    // sendEmail(blogPost.title, blogPost.author.email, blogPost.content,pdf)
     res.status(201).send({_id: reqPost._id})
   } catch (error) {
     console.log(err)
