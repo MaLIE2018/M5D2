@@ -1,5 +1,25 @@
 import PdfPrinter from "pdfmake"
+import fetch from "node-fetch"
+import DataURIParser from 'datauri/parser.js';
+import {promisify} from "util"
+import {extname} from "path"
 
+const parser = new DataURIParser()
+
+const getDataURI = async (url) => {
+  try {
+    const res = await fetch(url)
+    if(!res.ok) {throw new Error("url is not working")} 
+    else {
+      let data = await res.buffer();
+      const fileSuffix = extname(res.url)
+      const dataURI = parser.format(fileSuffix,data).content
+      return dataURI
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 
 export const generatePDFStream = async data => {
@@ -16,13 +36,17 @@ export const generatePDFStream = async data => {
   
 
   const printer = new PdfPrinter(fonts)
-  
+  const dataURI = await getDataURI(blog.cover)
   
   let plainText = blog.content.replace(/<[^>]+>/g, '');
 
 
   const docDefinition = {
     content: [
+      {
+        image: dataURI,
+        width: 500
+      },
       {
         text: blog.title,
         style: 'header'
