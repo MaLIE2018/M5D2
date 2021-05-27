@@ -1,13 +1,14 @@
 import PdfPrinter from "pdfmake"
 import fetch from "node-fetch"
 import DataURIParser from 'datauri/parser.js';
-import {extname} from "path"
+import {extname, join, dirname} from "path"
 import isURL from 'validator/lib/isURL.js';
-const parser = new DataURIParser()
-import pipeline from "stream"
+import {pipeline} from "stream"
 import { promisify } from "util";
 import { createWriteStream } from "fs";
 
+const asyncPipeline = promisify(pipeline)
+const parser = new DataURIParser()
 const getDataURI = async (url) => {
   try {
     const res = await fetch(url)
@@ -35,11 +36,9 @@ export const generatePDFStream = async data => {
   };
   
   const blog = data[0]
-  
-  
-
   const printer = new PdfPrinter(fonts)
   let url = ""
+
   if(isURL(blog.cover)){
     url = blog.cover
   }else{
@@ -100,7 +99,6 @@ export const generatePDFStream = async data => {
   return pdfReadableStream
 }
 
-const asyncPipeline = promisify(pipeline)
 
 export const getPDF = async data => {
   const fonts = {
@@ -171,8 +169,9 @@ export const getPDF = async data => {
   }
 
   const pdfReadableStream = printer.createPdfKitDocument(docDefinition)
-  let destination = createWriteStream("../data/tempPDF/send.pdf")
+  const filePath = join(dirname(import.meta.url), "../data/tempPDF/send.pdf")
+  const destination = createWriteStream(filePath)
   await asyncPipeline(pdfReadableStream, destination, err => {console.log(err)})
-  
+  pdfReadableStream.end()
 }
 

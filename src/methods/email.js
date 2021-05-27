@@ -5,7 +5,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 
 const createEmailWithAttachments = (title, toEmail, html, attachment) => {
-  return msg = {
+  return {
     to: toEmail,
     from: 'liebsch@pm.me',
     subject: `New Blog Post ${title}`,
@@ -23,7 +23,7 @@ const createEmailWithAttachments = (title, toEmail, html, attachment) => {
 }
 
 const createEmailWithoutAttachments = (title, toEmail, html) => {
-  return msg = {
+  return {
     to: toEmail,
     from: 'liebsch@pm.me',
     subject: `New Blog Post ${title}`,
@@ -44,11 +44,13 @@ export const sendEmailWAtt = async (title,toEmail, html, attachment) => {
     }
   }
 }
+
 export const sendEmail = async (title,toEmail, html) => {
+  console.log("test")
   try {
     await sgMail.send(createEmailWithoutAttachments(title,toEmail, html));
   } catch (error) {
-    console.error(error);
+    console.error("error", error);
     if (error.response) {
       console.error(error)
     }
