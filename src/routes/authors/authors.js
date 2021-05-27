@@ -1,6 +1,9 @@
 import express from 'express';
 import { nanoid } from 'nanoid'
 import {getItems, writeItems, getFilePath} from '../../methods/fs-tools.js'
+import {pipeline} from "stream"
+import { Transform } from 'json2csv';
+import {createFileStream} from "../../methods/csv.js"
 const ARouter = express.Router();
 const filePath = getFilePath('authors.json')
 
@@ -8,6 +11,22 @@ const filePath = getFilePath('authors.json')
 // ********************Requests******************************
 ARouter.get('/', async (req, res, next) => {
   try {
+    res.status(200).send(await getItems(filePath))
+  } catch (error) {
+    next(error)
+  }
+  
+})
+
+ARouter.get('/csv', async (req, res, next) => {
+  try {
+    const fields = ['name', 'surname', 'email', "dateOfBirth", "avatar", "_id"];
+    const opts = { fields };
+    const json2csv = new Transform(opts)
+    res.setHeader("Content-Disposition", `attachment; filename=export.csv`)
+    pipeline(createFileStream(), json2csv, res, error => {if(error){
+      next(error)
+    }})
     res.status(200).send(await getItems(filePath))
   } catch (error) {
     next(error)

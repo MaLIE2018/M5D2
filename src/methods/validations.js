@@ -29,7 +29,7 @@ const blogPostSchema = {
     isString: {
       errorMessage: "content validation failed , type must be string",
     }
-  },
+  }
 }
 
 

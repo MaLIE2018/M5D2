@@ -4,8 +4,10 @@ import multer from "multer"
 import {extname} from "path"
 import {v2 as cloudinary} from "cloudinary"
 import {CloudinaryStorage} from "multer-storage-cloudinary"
-import pipeline from "stream"
-import { generatePDFStream,generatePDFStream2 } from './pdf.js';
+import { generatePDFStream } from './pdf.js';
+
+
+
 const fRouter = express.Router()
 
 const filePath = getFilePath("blogPosts.json")
@@ -71,21 +73,6 @@ fRouter.get("/:id/PDFDownload", async (req, res, next) => {
     console.log(error)
   }
 })
-
-fRouter.get("/:id/PDFDownload2", async(req, res, next) => {
-  try {
-    // console.log(req.body)
-    res.setHeader("Content-Type", "application/json")
-    const buffer = await generatePDFStream2()
-
-    res.download(buffer)
-  } catch (error) {
-    console.log(error)
-  }
-})
-
-
-
 
 
 
