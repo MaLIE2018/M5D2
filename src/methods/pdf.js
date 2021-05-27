@@ -172,8 +172,7 @@ export const getPDF = async data => {
 
   const pdfReadableStream = printer.createPdfKitDocument(docDefinition)
   let destination = createWriteStream("../data/tempPDF/send.pdf")
-  // return await asyncPipeline(pdfReadableStream, destination, err => {console.log(err)})
+  await asyncPipeline(pdfReadableStream, destination, err => {console.log(err)})
   
- 
 }
 
